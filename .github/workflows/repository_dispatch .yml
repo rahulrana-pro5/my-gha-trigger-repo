@@ -1,0 +1,17 @@
+name: Artifact Image Push Trigger
+
+on:
+  repository_dispatch:
+    types: [artifact-image-push]
+
+jobs:
+  handle-image-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run image push related jobs
+        run: |
+          echo "Triggered by image push event"
+          # Add your deployment or build steps here
