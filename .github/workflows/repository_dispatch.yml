@@ -1,8 +1,12 @@
 name: Artifact Image Push Trigger
 
+# .github/workflows/<any-name>.yml
 on:
-  repository_dispatch:
-    types: [artifact-image-push]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Why it was triggered
+        required: false
 
 jobs:
   handle-image-push:
