@@ -1,22 +1,18 @@
 name: Artifact Image Push Trigger
 
-# .github/workflows/<any-name>.yml
 on:
   workflow_dispatch:
     inputs:
-      reason:
-        description: Why it was triggered
-        required: false
+      image:        { required: true }
+      tag:          { required: true }
+      artifact_path: { required: true }
 
 jobs:
-  image-push-to-GAR:
+  handle:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - run: |
+          echo "image=${{ github.event.inputs.image }}"
+          echo "tag=${{ github.event.inputs.tag }}"
+          echo "artifact=${{ github.event.inputs.artifact_path }}"
 
-      - name: Run image push related jobs
-        run: |
-          echo "Hey Hello !!!"
-          echo "Triggered by image push event"
-          # Add your deployment or build steps here
