@@ -9,7 +9,7 @@ on:
         required: false
 
 jobs:
-  handle-image-push:
+  image-push-to-GAR:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,5 +17,6 @@ jobs:
 
       - name: Run image push related jobs
         run: |
+          echo "Hey Hello !!!"
           echo "Triggered by image push event"
           # Add your deployment or build steps here
